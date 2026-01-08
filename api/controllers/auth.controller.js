@@ -34,7 +34,7 @@ export const signin = async (req, res, next) => {
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
-    const {password, ...otherDetails} = validUser._doc;
+    const { password: hashedPassword, ...otherDetails } = validUser._doc;
 
     res.cookie("access_token", token, {
       httpOnly: true,
